@@ -1,0 +1,100 @@
+-- Retrieve customer information from the Customer table
+SELECT 
+    FirstName,          -- Select the customer's first name
+    LastName,           -- Select the customer's last name
+    Email               -- Select the customer's email address
+FROM
+    Customer             -- Specify the source table (Customer)
+
+-- Order the results:
+ORDER BY
+    LastName DESC,      -- Sort by last name in descending order
+    FirstName ASC       -- Then sort by first name in ascending order
+
+-- Limit the result set to the first 10 rows:
+LIMIT 10;
+
+
+SQL (Structured Query Language) supports various types of operators that allow you to perform operations on data within your queries. These operators can be categorized into several types:
+
+1. **Arithmetic Operators:**
+   - `+` (Addition): Adds two values.
+   - `-` (Subtraction): Subtracts one value from another.
+   - `*` (Multiplication): Multiplies two values.
+   - `/` (Division): Divides one value by another.
+   - `%` (Modulus): Returns the remainder of a division operation.
+
+   Example:
+   ```sql
+   SELECT salary + bonus AS total_income
+   FROM employees;
+   ```
+
+2. **Comparison Operators:**
+   - `=` (Equal to): Tests if two values are equal.
+   - `<>` or `!=` (Not equal to): Tests if two values are not equal.
+   - `<` (Less than): Tests if one value is less than another.
+   - `>` (Greater than): Tests if one value is greater than another.
+   - `<=` (Less than or equal to): Tests if one value is less than or equal to another.
+   - `>=` (Greater than or equal to): Tests if one value is greater than or equal to another.
+
+   Example:
+   ```sql
+   SELECT product_name
+   FROM products
+   WHERE price > 50;
+   ```
+
+3. **Logical Operators:**
+   - `AND` (Logical AND): Combines two or more conditions, and all must be true for the overall condition to be true.
+   - `OR` (Logical OR): Combines two or more conditions, and at least one must be true for the overall condition to be true.
+   - `NOT` (Logical NOT): Negates the condition, making a true condition false and vice versa.
+
+   Example:
+   ```sql
+   SELECT customer_name
+   FROM customers
+   WHERE city = 'New York' AND (credit_score > 700 OR loyalty_level = 'Gold');
+   ```
+
+4. **Concatenation Operator:**
+   - `||` (Double Pipe): Concatenates two or more strings together.
+
+   Example:
+   ```sql
+   SELECT first_name || ' ' || last_name AS full_name
+   FROM employees;
+   ```
+
+5. **Wildcard Operators:**
+   - `%` (Percent): Represents zero or more characters in a string.
+   - `_` (Underscore): Represents a single character in a string.
+
+   Example:
+   ```sql
+   SELECT product_name
+   FROM products
+   WHERE product_name LIKE 'Apple%';
+   ```
+
+6. **IN Operator:**
+   - Tests if a value matches any value in a list.
+
+   Example:
+   ```sql
+   SELECT product_name
+   FROM products
+   WHERE category_id IN (1, 2, 3);
+   ```
+
+7. **BETWEEN Operator:**
+   - Tests if a value falls within a specified range.
+
+   Example:
+   ```sql
+   SELECT order_id
+   FROM orders
+   WHERE order_date BETWEEN '2023-01-01' AND '2023-12-31';
+   ```
+
+These are some of the most common operators used in SQL queries to perform various types of operations on data within database tables. The specific operators available and their behavior can vary slightly between different database management systems (e.g., MySQL, PostgreSQL, SQL Server), so it's important to consult the documentation for your specific database system when working with SQL operators.
