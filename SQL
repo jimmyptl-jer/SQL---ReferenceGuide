@@ -98,3 +98,336 @@ SQL (Structured Query Language) supports various types of operators that allow y
    ```
 
 These are some of the most common operators used in SQL queries to perform various types of operations on data within database tables. The specific operators available and their behavior can vary slightly between different database management systems (e.g., MySQL, PostgreSQL, SQL Server), so it's important to consult the documentation for your specific database system when working with SQL operators.
+
+/* 
+   Retrieve information about customers who purchased two songs at $0.99 each.
+   The total amount for such purchases should be $1.98.
+*/
+
+-- Select the columns to be displayed in the result:
+SELECT 
+    InvoiceDate,         -- Invoice date
+    BillingAddress,      -- Billing address
+    BillingCity,         -- Billing city
+    total                -- Total amount of the invoice
+
+-- Specify the source table (Invoice):
+FROM
+    Invoice
+
+-- Filter the results to include only invoices with a total of $1.98:
+WHERE
+    total = 1.98
+
+-- Order the results by invoice date in ascending order:
+ORDER BY
+    InvoiceDate;
+
+
+/* 
+   Calculate the number of invoices that have a total amount between $1.99 and $5.00.
+*/
+
+-- Select the columns to be displayed in the result:
+SELECT 
+    InvoiceDate,         -- Invoice date
+    BillingAddress,      -- Billing address
+    BillingCity,         -- Billing city
+    total                -- Total amount of the invoice
+
+-- Specify the source table (Invoice):
+FROM
+    Invoice
+
+-- Filter the results to include only invoices with a total amount between $1.99 and $5.00:
+WHERE
+    total BETWEEN 1.99 AND 5.00
+
+-- Order the results by the total amount in ascending order (optional):
+ORDER BY
+    total;
+
+
+/* 
+   Calculate the number of invoices that have a total amount of either $1.98 or $3.96.
+*/
+
+-- Select the columns to be displayed in the result:
+SELECT 
+    InvoiceDate,         -- Invoice date
+    BillingAddress,      -- Billing address
+    BillingCity,         -- Billing city
+    total                -- Total amount of the invoice
+
+-- Specify the source table (Invoice):
+FROM
+    Invoice
+
+-- Filter the results to include only invoices with total amounts of $1.98 or $3.96:
+WHERE
+    total IN (1.98, 3.96)
+
+-- Order the results by the total amount in ascending order (optional):
+ORDER BY
+    total;
+
+/* 
+   Retrieve invoice information for invoices where the billing city is 'Brussels'.
+*/
+
+-- Select the columns to be displayed in the result:
+SELECT 
+    InvoiceDate,         -- Invoice date
+    BillingAddress,      -- Billing address
+    BillingCity          -- Billing city
+
+-- Specify the source table (Invoice):
+FROM
+    Invoice
+
+-- Filter the results to include only invoices with a billing city of 'Brussels':
+WHERE
+    BillingCity = 'Brussels'
+
+-- Order the results by the invoice date in ascending order:
+ORDER BY
+    InvoiceDate;
+
+/* 
+   Retrieve invoice information for invoices where the billing city is 'Brussels,' 'Paris,' or 'Orlando'.
+*/
+
+-- Select the columns to be displayed in the result:
+SELECT 
+    InvoiceDate,         -- Invoice date
+    BillingAddress,      -- Billing address
+    BillingCity          -- Billing city
+
+-- Specify the source table (Invoice):
+FROM
+    Invoice
+
+-- Filter the results to include only invoices with billing cities of 'Brussels,' 'Paris,' or 'Orlando':
+WHERE
+    BillingCity IN ('Brussels', 'Paris', 'Orlando')
+
+-- Order the results by the invoice date in ascending order:
+ORDER BY
+    InvoiceDate;
+
+/* 
+   Retrieve invoice information for invoices where the billing city contains the letter 'b' (case-insensitive).
+*/
+
+-- Select the columns to be displayed in the result:
+SELECT 
+    InvoiceDate,         -- Invoice date
+    BillingAddress,      -- Billing address
+    BillingCity          -- Billing city
+
+-- Specify the source table (Invoice):
+FROM
+    Invoice
+
+-- Filter the results to include only invoices with billing cities containing 'b' (case-insensitive):
+WHERE
+    BillingCity LIKE '%b%'
+
+-- Order the results by the invoice date in ascending order:
+ORDER BY
+    InvoiceDate;
+
+/* 
+   Retrieve invoice information for invoices where the billing city starts with the letter 'B' (case-sensitive).
+*/
+
+-- Select the columns to be displayed in the result:
+SELECT 
+    InvoiceDate,         -- Invoice date
+    BillingAddress,      -- Billing address
+    BillingCity          -- Billing city
+
+-- Specify the source table (Invoice):
+FROM
+    Invoice
+
+-- Filter the results to include only invoices with billing cities starting with 'B' (case-sensitive):
+WHERE
+    BillingCity LIKE 'B%'
+
+-- Order the results by the invoice date in ascending order:
+ORDER BY
+    InvoiceDate;
+
+/* 
+   Retrieve invoice information for invoices where the billing city starts with the letter 'B' (case-insensitive).
+*/
+
+-- Select the columns to be displayed in the result:
+SELECT 
+    InvoiceDate,         -- Invoice date
+    BillingAddress,      -- Billing address
+    BillingCity          -- Billing city
+
+-- Specify the source table (Invoice):
+FROM
+    Invoice
+
+-- Filter the results to include only invoices with billing cities starting with 'B' (case-insensitive):
+WHERE
+    BillingCity LIKE 'B%'
+
+-- Order the results by the invoice date in ascending order:
+ORDER BY
+    InvoiceDate;
+
+/* 
+   Retrieve invoice information for invoices with the InvoiceDate '2010-05-22 00:00:00'.
+*/
+
+-- Select the columns to be displayed in the result:
+SELECT 
+    InvoiceDate,         -- Invoice date
+    BillingAddress,      -- Billing address
+    BillingCity          -- Billing city
+
+-- Specify the source table (Invoice):
+FROM
+    Invoice
+
+-- Filter the results to include only invoices with the InvoiceDate '2010-05-22 00:00:00':
+WHERE
+    InvoiceDate = '2010-05-22 00:00:00'
+
+-- Order the results by the invoice date in ascending order:
+ORDER BY
+    InvoiceDate;
+
+/* 
+   Retrieve invoice information for invoices with the date part of InvoiceDate equal to '2010-05-22'.
+*/
+
+-- Select the columns to be displayed in the result:
+SELECT 
+    InvoiceDate,         -- Invoice date
+    BillingAddress,      -- Billing address
+    BillingCity          -- Billing city
+
+-- Specify the source table (Invoice):
+FROM
+    Invoice
+
+-- Filter the results to include only invoices with the date part of InvoiceDate equal to '2010-05-22':
+WHERE
+    DATE(InvoiceDate) = '2010-05-22'
+
+-- Order the results by the invoice date in ascending order:
+ORDER BY
+    InvoiceDate;
+
+/* 
+   Retrieve invoice information for invoices where the billing city starts with 'P' or 'D'.
+*/
+
+-- Select the columns to be displayed in the result:
+SELECT 
+    InvoiceDate,         -- Invoice date
+    BillingAddress,      -- Billing address
+    BillingCity,         -- Billing city
+    total                -- Total amount of the invoice
+
+-- Specify the source table (Invoice):
+FROM
+    Invoice
+
+-- Filter the results to include only invoices with billing cities starting with 'P' or 'D':
+WHERE
+    BillingCity LIKE 'P%' OR BillingCity LIKE 'D%'
+
+-- Order the results by the total amount in ascending order:
+ORDER BY
+    total;
+
+
+/* 
+   Retrieve invoice information for invoices where the billing city starts with 'P' or 'D'
+   and the total amount is greater than $1.98.
+*/
+
+-- Select the columns to be displayed in the result:
+SELECT 
+    InvoiceDate,         -- Invoice date
+    BillingAddress,      -- Billing address
+    BillingCity,         -- Billing city
+    total                -- Total amount of the invoice
+
+-- Specify the source table (Invoice):
+FROM
+    Invoice
+
+-- Filter the results to include invoices with billing cities starting with 'P' or 'D'
+-- and a total amount greater than $1.98:
+WHERE
+    (BillingCity LIKE 'P%' OR BillingCity LIKE 'D%') AND total > 1.98
+
+-- Order the results by the total amount in ascending order:
+ORDER BY
+    total;
+
+/* 
+   Retrieve invoice information for invoices where the billing city starts with 'P' or 'D'
+   and the total amount is greater than $1.98.
+*/
+
+-- Select the columns to be displayed in the result:
+SELECT 
+    InvoiceDate,         -- Invoice date
+    BillingAddress,      -- Billing address
+    BillingCity,         -- Billing city
+    total                -- Total amount of the invoice
+
+-- Specify the source table (Invoice):
+FROM
+    Invoice
+
+-- Filter the results to include invoices with billing cities starting with 'P' or 'D'
+-- and a total amount greater than $1.98:
+WHERE
+    (BillingCity LIKE 'P%' OR BillingCity LIKE 'D%') AND total > 1.98
+
+-- Order the results by the total amount in ascending order:
+ORDER BY
+    total;
+
+/* 
+   Retrieve invoice information with a categorized "PurchaseType" for invoices where the billing city starts with 'P' or 'D'
+   and the total amount is greater than $1.98.
+*/
+
+-- Select the columns to be displayed in the result:
+SELECT 
+    InvoiceDate,         -- Invoice date
+    BillingAddress,      -- Billing address
+    BillingCity,         -- Billing city
+    total,               -- Total amount of the invoice
+
+    -- Calculate and assign a "PurchaseType" based on the total amount:
+    CASE
+        WHEN total < 2.00 THEN 'Baseline Purchase'
+        WHEN total BETWEEN 2.00 AND 6.99 THEN 'Low Purchase'
+        WHEN total BETWEEN 7.00 AND 15.00 THEN 'TARGET Purchase'
+        ELSE 'Top Performer'
+    END AS PurchaseType
+
+-- Specify the source table (Invoice):
+FROM
+    Invoice
+
+-- Filter the results to include invoices with billing cities starting with 'P' or 'D'
+-- and a total amount greater than $1.98:
+WHERE
+    (BillingCity LIKE 'P%' OR BillingCity LIKE 'D%') AND total > 1.98
+
+-- Order the results by the total amount in ascending order:
+ORDER BY
+    total;
